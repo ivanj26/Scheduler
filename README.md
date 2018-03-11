@@ -1,7 +1,7 @@
 # Scheduler
 
-<b>LINK PENTING</b>
-<br> https://graphviz.gitlab.io/_pages/Download/Download_windows.html </br> <i>Ini buat visualisasi graph</i>
+<b>LINK PENTING</b> <br>
+https://graphviz.gitlab.io/_pages/Download/Download_windows.html <i>Ini buat visualisasi graph</i>
 
 Aplikasi untuk menjadwalkan jadwal kuliah dengan Algoritma DFS/BFS
 
