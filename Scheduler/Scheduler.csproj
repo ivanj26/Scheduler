@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9A356A77-042D-4682-BB03-ED0A56635120}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>Scheduler</RootNamespace>
     <AssemblyName>Scheduler</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -35,6 +35,21 @@
     <StartupObject>Scheduler.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Graphviz, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Graphviz.2.38.0.2\lib\Graphviz.dll</HintPath>
+    </Reference>
+    <Reference Include="QuickGraph, Version=3.6.61114.0, Culture=neutral, PublicKeyToken=f3fb40175eec2af3, processorArchitecture=MSIL">
+      <HintPath>packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.dll</HintPath>
+    </Reference>
+    <Reference Include="QuickGraph.Data, Version=3.6.61114.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="QuickGraph.Graphviz, Version=3.6.61114.0, Culture=neutral, PublicKeyToken=f3fb40175eec2af3, processorArchitecture=MSIL">
+      <HintPath>packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.Graphviz.dll</HintPath>
+    </Reference>
+    <Reference Include="QuickGraph.Serialization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.Serialization.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -58,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">

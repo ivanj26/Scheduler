@@ -52,6 +52,7 @@ namespace Scheduler
             this.tampilkanGraph.TabIndex = 1;
             this.tampilkanGraph.Text = "Tampilkan Graph Acyclic";
             this.tampilkanGraph.UseVisualStyleBackColor = true;
+            this.tampilkanGraph.Click += new System.EventHandler(this.tampilkanGraph_Click);
             // 
             // cariFile
             // 

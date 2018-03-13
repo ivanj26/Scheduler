@@ -5,17 +5,26 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuickGraph;
 
 namespace Scheduler
 {
     public partial class MainForm : Form
     {
+        // Create new graph
+        
+        AdjacencyGraph<string, Edge<string>> graph = new AdjacencyGraph<string, Edge<string>>(
+            true // directed graph
+            );
+        TextBox isiFileTextBox = new TextBox();
         public MainForm()
         {
             InitializeComponent();
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -35,7 +44,6 @@ namespace Scheduler
                 try
                 {
                     this.namaFileTextBox.Text = openFileDialog.FileName;
-                    TextBox isiFileTextBox = new TextBox();
                     Label isiFileLabel = new Label();
 
                     isiFileLabel.AutoSize = true;
@@ -73,10 +81,44 @@ namespace Scheduler
             {
                 tampilkanGraph.Enabled = true;
             }
-            else
-            {
-                tampilkanGraph.Enabled = false;
+        }
+
+        private void tampilkanGraph_Click(object sender, EventArgs e)
+        {
+            graph.Clear();
+            Console.Clear();
+            HashSet<string> hashSetMatKul = parseStringToSetOfIVertex(isiFileTextBox.Text.ToString());
+
+            //create vertex (matkul)
+            foreach (string matkul in hashSetMatKul) {
+                graph.AddVertex(matkul);
             }
+
+            //tampilin vertex di graph
+            foreach (string v in graph.Vertices)
+            {
+                Console.WriteLine(v);
+            }
+        }
+
+        private HashSet<string> parseStringToSetOfIVertex(string text) {
+            //Baca string di textbox
+            char[] delimit = {
+                ' ',
+                '.',
+                ',',
+                '\n',
+                '\0'
+            };
+
+            string[] arrayMatKul = text.Split(delimit);
+            HashSet<string> hashSetMatKul = new HashSet<string>();
+            foreach (string matkul in arrayMatKul) {
+                if (!String.IsNullOrEmpty(matkul) && !String.IsNullOrWhiteSpace(matkul)) {
+                    hashSetMatKul.Add(matkul);
+                }
+            }
+            return hashSetMatKul;
         }
     }
 }
