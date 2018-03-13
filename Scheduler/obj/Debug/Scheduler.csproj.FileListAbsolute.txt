@@ -7,3 +7,12 @@ E:\Documents\Visual Studio 2017\Projects\Scheduler\Scheduler\obj\Debug\Scheduler
 E:\Documents\Visual Studio 2017\Projects\Scheduler\Scheduler\obj\Debug\Scheduler.csproj.CoreCompileInputs.cache
 E:\Documents\Visual Studio 2017\Projects\Scheduler\Scheduler\obj\Debug\Scheduler.exe
 E:\Documents\Visual Studio 2017\Projects\Scheduler\Scheduler\obj\Debug\Scheduler.pdb
+E:\Documents\Visual Studio 2017\Projects\Scheduler\Scheduler\bin\Debug\Graphviz.dll
+E:\Documents\Visual Studio 2017\Projects\Scheduler\Scheduler\bin\Debug\QuickGraph.dll
+E:\Documents\Visual Studio 2017\Projects\Scheduler\Scheduler\bin\Debug\QuickGraph.Data.dll
+E:\Documents\Visual Studio 2017\Projects\Scheduler\Scheduler\bin\Debug\QuickGraph.Graphviz.dll
+E:\Documents\Visual Studio 2017\Projects\Scheduler\Scheduler\bin\Debug\QuickGraph.Serialization.dll
+E:\Documents\Visual Studio 2017\Projects\Scheduler\Scheduler\bin\Debug\QuickGraph.xml
+E:\Documents\Visual Studio 2017\Projects\Scheduler\Scheduler\bin\Debug\QuickGraph.Data.xml
+E:\Documents\Visual Studio 2017\Projects\Scheduler\Scheduler\bin\Debug\QuickGraph.Graphviz.xml
+E:\Documents\Visual Studio 2017\Projects\Scheduler\Scheduler\bin\Debug\QuickGraph.Serialization.xml
