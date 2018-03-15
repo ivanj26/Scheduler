@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuickGraph;
+using QuickGraph.Graphviz;
+using QuickGraph.Graphviz.Dot;
 
 namespace Scheduler
 {
@@ -87,6 +90,10 @@ namespace Scheduler
         {
             graph.Clear();
             Console.Clear();
+            if (Application.OpenForms.Count == 2)
+            {
+                Application.OpenForms[1].Dispose();
+            }
             HashSet<string> hashSetMatKul = parseStringToSetOfIVertex(isiFileTextBox.Text.ToString());
 
             //create vertex (matkul)
@@ -94,10 +101,59 @@ namespace Scheduler
                 graph.AddVertex(matkul);
             }
 
-            //tampilin vertex di graph
-            foreach (string v in graph.Vertices)
+            addEdges();
+            foreach (string w in graph.Vertices)
             {
-                Console.WriteLine(v);
+                Console.WriteLine(w);
+            }
+
+            GraphvizAlgorithm<string, Edge<string>> graphvizAlgorithm = new GraphvizAlgorithm<string, Edge<string>>(graph);
+            graphvizAlgorithm.ImageType = GraphvizImageType.Png;
+            graphvizAlgorithm.FormatVertex += GraphvizAlgorithm_FormatVertex;
+            graphvizAlgorithm.FormatEdge += GraphvizAlgorithm_FormatEdge;
+            graphvizAlgorithm.Generate(new FileDotEngine(), Application.StartupPath + "\\image\\image.png");
+
+            //show Graph!
+            Form pictureForm = new Form();
+            PictureBox pictureBox = new PictureBox();
+
+            pictureBox.Image = Image.FromFile(Application.StartupPath + "\\image\\image.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
+
+            pictureForm.Size = new Size(pictureBox.Width + 15, pictureBox.Height + 50);
+            pictureForm.Show();
+            pictureForm.MaximizeBox = false;
+            pictureForm.FormBorderStyle = FormBorderStyle.FixedSingle;
+            pictureForm.ShowIcon = false;
+            pictureForm.Text = "Sketch Graph";
+            pictureForm.Controls.Add(pictureBox);
+        }
+
+        private void GraphvizAlgorithm_FormatEdge(object sender, FormatEdgeEventArgs<string, Edge<string>> e)
+        {
+        }
+
+        private void GraphvizAlgorithm_FormatVertex(object sender, FormatVertexEventArgs<string> e)
+        {
+            e.VertexFormatter.Label = e.Vertex;
+        }
+
+        private void addEdges()
+        {
+            char[] delimit1 = { '\n' };
+            char[] delimit2 = { ',', ' ', '.' };
+
+            string[] arraySplit1 = isiFileTextBox.Text.ToString().Split(delimit1);
+            for (int i = 0; i < arraySplit1.Length; i++)
+            {
+                string[] arraySplit2 = arraySplit1[i].Split(delimit2);
+                for (int j = 1; j < arraySplit2.Length; j++) {
+                    if (!String.IsNullOrEmpty(arraySplit2[j]) && !String.IsNullOrWhiteSpace(arraySplit2[j]))
+                    {
+                        Edge<string> edge = new Edge<string>(arraySplit2[j], arraySplit2[0]);
+                        graph.AddEdge(edge);
+                    }
+                }
             }
         }
 
