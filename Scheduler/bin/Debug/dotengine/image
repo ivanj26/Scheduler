@@ -1,0 +1,14 @@
+digraph G {
+0 [label="DASPRO"];
+1 [label="PTI"];
+2 [label="ALSTRUKDAT"];
+3 [label="KALKULUSII"];
+4 [label="OOP"];
+0 -> 2 [ ];
+0 -> 3 [ ];
+1 -> 0 [ ];
+1 -> 3 [ ];
+2 -> 4 [ ];
+3 -> 2 [ ];
+3 -> 4 [ ];
+}
